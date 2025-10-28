@@ -1,0 +1,35 @@
+.login-button{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 20px;
+}
+
+
+.nav-section{
+    display: flex;
+    justify-content: center;
+}
+
+.menuList{
+    display: flex;
+    list-style: none;
+}
+
+.menuList li{
+    padding: 1rem;
+}
+
+.menu-area{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.input-area{
+    position: absolute;
+    right: 0;
+    top: -5px;
+    margin: 1rem 0;
+    padding: 1rem;
+}
