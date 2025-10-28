@@ -30,8 +30,8 @@ const Navbar = () => {
       </div>
       <div className="menu-area">
         <ul className="menuList">
-          {menuList.map((menu) => (
-            <li>{menu}</li>
+          {menuList.map((menu, id) => (
+            <li key={id}>{menu}</li>
           ))}
         </ul>
         <div className="input-area">
