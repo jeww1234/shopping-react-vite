@@ -1,0 +1,20 @@
+.detail-card-imgBox{
+    display: flex;
+    justify-content: flex-end;
+    width: 100vw;
+    margin: 2rem 0;
+}
+
+.detail-card-imgBox img{
+    width: 60%;
+    border: 1px solid black;
+}
+
+.detail-card-infoBox{
+    text-align: left;
+}
+
+.detail-card-button{
+    width: 100%;
+    margin: 0.5rem 0;
+}

@@ -1,0 +1,19 @@
+.product-card{
+    margin: 1rem 0.5rem
+    
+}
+.product-card:hover{
+    transform: scale(1.05);
+    background-color: white;
+    
+}
+.product-card img{
+    max-width: 90%;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.product-card div{
+    box-sizing: border-box;
+    padding: 0 5px;
+}
