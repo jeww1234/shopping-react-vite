@@ -28,7 +28,7 @@ const ProductDetail = ({ productList }) => {
             <option value="">L</option>
           </select>
           <h3><span className="me-1">\</span>{detailCard?.price}</h3>
-          <Button variant="danger" type="submit">구매하기</Button>
+          <Button variant="danger" type="submit"> 구매하기 </Button>
         </Col>
       </Row>
     </Container>
