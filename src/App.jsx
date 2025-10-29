@@ -8,22 +8,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import PrivateRoute from "./route/PrivateRoute";
 import Footer from "./component/Footer/Footer"
+import productsData from "../db.json";
 
 function App() {
   const [authenticate, setAuthenticate] = useState(false); //in = t, out = f
 
   const [productList, setProductList] = useState([]);
-  const getProducts = async () => {
-    let url = "http://localhost:3000/products";
-    let response = await fetch(url);
-    let data = await response.json();
-    console.log(data);
-    setProductList(data);
-    console.log(productList);
-  };
+
+  // const getProducts = async () => {
+  //   let url = "http://localhost:3000/products";
+  //   let response = await fetch(url);
+  //   let data = await response.json();
+  //   console.log(data);
+  //   setProductList(data);
+  //   console.log(productList);
+  // };
 
   useEffect(() => {
-    getProducts();
+    setProductList(productsData.products);
   }, []);
   //전체 상품페이지 상세 상품페이지
   //전체 상품페이지 -> 전체 상품
