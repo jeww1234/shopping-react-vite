@@ -7,9 +7,20 @@ import Button from "react-bootstrap/Button";
 import "./ProductDetail.style.css"
 
 const ProductDetail = ({ productList }) => {
+  // const [product, setProduct] = useState(null)
   console.log("dddd", productList[0]);
   const { id } = useParams();
   let detailCard = productList.find((item) => String(item.id) === id);
+
+  // let url = `http://localhost:5173/product/${id}`
+  // let response = await fetch(url)
+  // let data = response.json()
+  // console.log(data)
+  // setProduct(dataF)
+
+  //패치를 다시해서 데이터를 가져오면 좋은점
+  //SEO에 유리함 디테일 페이지 각각이 검색에 노출 될 수 있다
+  //새로고침해도 데이터가 사라지지 않는다.
 
   return (
     <Container className="detail-card">
