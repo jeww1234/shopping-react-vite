@@ -7,26 +7,31 @@ import Navbar from "./component/Navbar/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import PrivateRoute from "./route/PrivateRoute";
-import Footer from "./component/Footer/Footer"
-import productsData from "../db.json";
+import Footer from "./component/Footer/Footer";
+// import productsData from "../db.json";
+import { useSearchParams } from "react-router-dom";
 
 function App() {
   const [authenticate, setAuthenticate] = useState(false); //in = t, out = f
 
   const [productList, setProductList] = useState([]);
-
-  // const getProducts = async () => {
-  //   let url = "http://localhost:3000/products";
-  //   let response = await fetch(url);
-  //   let data = await response.json();
-  //   console.log(data);
-  //   setProductList(data);
-  //   console.log(productList);
-  // };
+  const [query, setQuery] = useSearchParams();
+  console.log(setQuery)
+  const getProducts = async () => {
+    let searchQuery = query.get("q") || "";
+    console.log("query", searchQuery);
+    let url = `https://my-json-server.typicode.com/jeww1234/shopping-react-vite/products/?q=${searchQuery}`;
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log(data);
+    setProductList(data);
+    console.log(productList);
+  };
 
   useEffect(() => {
-    setProductList(productsData.products);
-  }, []);
+    // setProductList(productsData.products);
+    getProducts();
+  }, [query]);
   //전체 상품페이지 상세 상품페이지
   //전체 상품페이지 -> 전체 상품
   //로그인 페이지 클릭 -> 로그인 페이지 나온다
@@ -35,19 +40,30 @@ function App() {
   //로그아웃 버튼 클릭하면 로그아웃이된다
   //로그아웃되면 디테일 페이지를 볼 수 없다 -> 로그인 페이지로 이동
   //상품검색
-  useEffect(()=>{
+  useEffect(() => {
     console.log(authenticate);
-  },[authenticate])
+  }, [authenticate]);
   return (
     <div>
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
-        <Route path="/" element={<ProductAll productList={productList}/>}></Route>
+        <Route
+          path="/"
+          element={<ProductAll productList={productList} />}
+        ></Route>
         <Route
           path="/login"
           element={<Login setAuthenticate={setAuthenticate} />}
         ></Route>
-        <Route path="/product/:id" element={<PrivateRoute authenticate={authenticate} productList={productList}/>}></Route>
+        <Route
+          path="/product/:id"
+          element={
+            <PrivateRoute
+              authenticate={authenticate}
+              productList={productList}
+            />
+          }
+        ></Route>
       </Routes>
       <Footer />
     </div>

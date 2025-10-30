@@ -12,7 +12,7 @@ const ProductDetail = ({ productList }) => {
   const { id } = useParams();
   let detailCard = productList.find((item) => String(item.id) === id);
 
-  // let url = `http://localhost:5173/product/${id}`
+  // let url = `https://my-json-server.typicode.com/jeww1234/shopping-react-vite/product/${id}`
   // let response = await fetch(url)
   // let data = response.json()
   // console.log(data)

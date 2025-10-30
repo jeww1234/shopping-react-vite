@@ -28,6 +28,19 @@ const Navbar = ({authenticate, setAuthenticate}) => {
     
   }
 
+
+  const search = (e)=>{
+    if(e.key === "Enter"){
+      let keyword = e.target.value
+      console.log(keyword)
+      navigate(`/?q=${keyword}`)
+    }
+  }
+
+  const gotoHomePage =()=>{
+    navigate("/")
+  }
+
   return (
     <div>
       <div className="login-button" onClick={()=>goToLogin()}>
@@ -39,6 +52,7 @@ const Navbar = ({authenticate, setAuthenticate}) => {
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKVR3fypQR1hKJLLklwR7YRKXsu1bcSUK37g&s"
           alt="logo"
           className="mb-4"
+          onClick={gotoHomePage}
         />
       </div>
       <div className="menu-area">
@@ -49,7 +63,7 @@ const Navbar = ({authenticate, setAuthenticate}) => {
         </ul>
         <div className="input-area">
           <FontAwesomeIcon icon={faSearch} />
-          <input type="text" id="" />
+          <input type="text" id="" onKeyPress={search}/>
         </div>
       </div>
     </div>
