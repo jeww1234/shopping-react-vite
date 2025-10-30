@@ -1,35 +1,102 @@
-.login-button{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin: 5px 30px;
-    cursor: pointer;
+.menu-icon {
+  position: absolute;
+  transform: scale(1.5);
+  top: 15px;
+  left: 30px;
+  display: none;
+}
+.close-menu {
+  display: none;
 }
 
-
-.nav-section{
-    display: flex;
-    justify-content: center;
+.login-button {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 15px 30px;
+  cursor: pointer;
 }
 
-.menuList{
-    display: flex;
-    list-style: none;
+.nav-section {
+  display: flex;
+  justify-content: center;
 }
 
-.menuList li{
-    padding: 1rem;
+.menuList {
+  display: flex;
+  list-style: none;
 }
 
-.menu-area{
-    display: flex;
-    justify-content: center;
-    position: relative;
+.menuList li {
+  padding: 1rem;
 }
 
-.input-area{
+.menu-area {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.input-area {
+  position: absolute;
+  right: 10px;
+  top: -5px;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .menu-area {
     position: absolute;
+    display: block;
+    background-color: black;
+    color: white;
+    padding: 1rem 0;
+    cursor: pointer;
+    top: 0;
+    width: 100%;
+  }
+  .menu-area.hide {
+    transform: translateY(-400px);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .menu-area.show {
+    transform: translateY(0px);
+    transition: all 0.4s ease-in-out;
+  }
+
+  .menuList {
+    flex-direction: column;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    margin-top: 2rem;
+  }
+  .menuList li {
+    padding: 5px;
+  }
+  .menuList li:hover {
+    font-weight: bolder;
+    transform: scale(1.1);
+  }
+  .input-area {
+    position: sticky;
+    width: 100%;
+    text-align: left;
+    padding: 5px 0;
+  }
+  .input-area input {
+    min-width: calc(100% - 40px);
+    margin-left: 0.5rem;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+  .close-menu {
+    display: block;
+    position: absolute;
+    top: 10px;
     right: 10px;
-    top: -5px;
-    padding: 1rem;
+  }
 }

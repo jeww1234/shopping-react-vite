@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.style.css";
 
-
-const Navbar = ({authenticate, setAuthenticate}) => {
+const Navbar = ({ authenticate, setAuthenticate }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const menuList = [
     "여성",
     "남성",
@@ -18,34 +18,33 @@ const Navbar = ({authenticate, setAuthenticate}) => {
     "지속가능성",
   ];
 
-  const navigate = useNavigate()
-  const goToLogin = () =>{
-    if(authenticate===true){
-      setAuthenticate(false)
-    }else{
-      navigate("/login")
+  const navigate = useNavigate();
+  const goToLogin = () => {
+    if (authenticate === true) {
+      setAuthenticate(false);
+    } else {
+      navigate("/login");
     }
-    
-  }
+  };
 
-
-  const search = (e)=>{
-    if(e.key === "Enter"){
-      let keyword = e.target.value
-      console.log(keyword)
-      navigate(`/?q=${keyword}`)
+  const search = (e) => {
+    if (e.key === "Enter") {
+      let keyword = e.target.value;
+      console.log(keyword);
+      navigate(`/?q=${keyword}`);
     }
-  }
+  };
 
-  const gotoHomePage =()=>{
-    navigate("/")
-  }
+  const gotoHomePage = () => {
+    navigate("/");
+  };
 
   return (
     <div>
-      <div className="login-button" onClick={()=>goToLogin()}>
-        <FontAwesomeIcon icon={faUser} className="me-1"/>
-        <div>{authenticate===true?"로그아웃":"로그인"}</div>
+      <i className="fa-solid fa-bars menu-icon" onClick={()=>setMenuOpen(true)}></i>
+      <div className="login-button" onClick={() => goToLogin()}>
+        <FontAwesomeIcon icon={faUser} className="me-1" />
+        <div>{authenticate === true ? "로그아웃" : "로그인"}</div>
       </div>
       <div className="nav-section">
         <img
@@ -55,7 +54,8 @@ const Navbar = ({authenticate, setAuthenticate}) => {
           onClick={gotoHomePage}
         />
       </div>
-      <div className="menu-area">
+      <div className={`menu-area ${menuOpen ? "show" : "hide"}`}>
+        <button className="close-menu" onClick={()=>setMenuOpen(false)}>X</button>
         <ul className="menuList">
           {menuList.map((menu, id) => (
             <li key={id}>{menu}</li>
@@ -63,7 +63,7 @@ const Navbar = ({authenticate, setAuthenticate}) => {
         </ul>
         <div className="input-area">
           <FontAwesomeIcon icon={faSearch} />
-          <input type="text" id="" onKeyPress={search}/>
+          <input type="text" id="" onKeyPress={search} />
         </div>
       </div>
     </div>

@@ -2,4 +2,12 @@
     background-color: black;
     height: 200px;
     width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer h1{
+    font-size: 4rem;
 }
