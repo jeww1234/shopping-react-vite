@@ -25,11 +25,11 @@ const ProductDetail = ({ productList }) => {
   return (
     <Container className="detail-card">
       <Row>
-        <Col lg={6} className="detail-card-imgBox">
+        <Col lg={6} md={12} className="detail-card-imgBox">
           <img src={detailCard?.img} alt=""/>
         </Col>
-        <Col lg={6} className="detail-card-infoBox py-4">
-          <h1>{detailCard?.title}</h1>
+        <Col lg={6} md={12} className="detail-card-infoBox py-4">
+          <h2>{detailCard?.title}</h2>
           <span>{detailCard?.choice === true ? "*Choice" : ""}</span>
           <span className="ms-2">{detailCard?.new === true ? "*신제품" : ""}</span>
           <select name="" id="" className="my-1 ms-2">

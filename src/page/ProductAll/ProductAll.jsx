@@ -13,8 +13,8 @@ const ProductAll = ({ productList }) => {
       <Container>
         <Row>
           {productList.map((menu, id) => (
-            <Col key={id} lg={3}>
-              <ProductCard item={menu} />
+            <Col key={id} lg={4} md={6} sm={12}>
+              <ProductCard item={menu}/>
             </Col>
           ))}
         </Row>

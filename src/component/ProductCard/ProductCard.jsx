@@ -10,9 +10,9 @@ const ProductCard = ({ item }) => {
   return (
     <div className="product-card" onClick={showDetail}>
       <img src={item?.img} alt="" />
-      <div>{item?.title}</div>
-      <div>{item?.choice === true ? "*Choice" : ""}</div>
-      <div>{item?.new === true ? "*신제품" : ""}</div>
+      <h4>{item?.title}</h4>
+      <span className="me-1">{item?.choice === true ? "*Choice" : ""}</span>
+      <span className="me-1">{item?.new === true ? "*신제품" : ""}</span>
       <select name="" id="" className="my-1">
         <option value="">사이즈</option>
         <option value="">S</option>
